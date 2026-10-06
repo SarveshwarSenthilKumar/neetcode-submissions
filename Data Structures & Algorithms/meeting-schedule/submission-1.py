@@ -1,0 +1,17 @@
+"""
+Definition of Interval:
+class Interval(object):
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+"""
+
+class Solution:
+    def canAttendMeetings(self, intervals: List[Interval]) -> bool:
+        longestInterval = []
+        for interval in intervals:
+            for longInterval in longestInterval:
+                if interval.start > longInterval.start and interval.start < longInterval.end:
+                    return False
+            longestInterval.append(interval)
+        return True
